@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalkulator Kesehatan Terintegrasi</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100 text-gray-900 font-sans">
+    <header class="bg-indigo-600 text-white py-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-2xl font-bold">Kalkulator Kesehatan Terintegrasi</h1>
+      </div>
+    </header>
+
+    <main class="container mx-auto py-8">
+      <!-- Kalkulator Kehamilan -->
+      <section
+        id="pregnancy-calculator"
+        class="bg-white p-8 rounded-lg shadow-md mb-8"
+      >
+        <h2 class="text-2xl font-bold mb-6 text-blue-500">
+          Kalkulator Kehamilan
+        </h2>
+        <form class="space-y-4">
+          <div>
+            <label for="lmp" class="block text-sm font-medium text-gray-700"
+              >Tanggal Terakhir Menstruasi:</label
+            >
+            <input
+              type="date"
+              id="lmp"
+              class="mt-1 block w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            class="btn-animation bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+          >
+            Hitung Usia Kehamilan
+          </button>
+        </form>
+        <div id="pregnancy-result" class="mt-4 text-lg text-gray-700"></div>
+      </section>
+
+      <!-- Kalkulator IMT -->
+      <section
+        id="bmi-calculator"
+        class="bg-white p-8 rounded-lg shadow-md mb-8"
+      >
+        <h2 class="text-2xl font-bold mb-6 text-green-500">
+          Kalkulator Indeks Massa Tubuh (IMT)
+        </h2>
+        <form class="space-y-4">
+          <div>
+            <label for="height" class="block text-sm font-medium text-gray-700"
+              >Tinggi Badan (cm):</label
+            >
+            <input
+              type="number"
+              id="height"
+              class="mt-1 block w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              required
+            />
+          </div>
+          <div>
+            <label for="weight" class="block text-sm font-medium text-gray-700"
+              >Berat Badan (kg):</label
+            >
+            <input
+              type="number"
+              id="weight"
+              class="mt-1 block w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            class="btn-animation bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600"
+          >
+            Hitung IMT
+          </button>
+        </form>
+        <div id="bmi-result" class="mt-4 text-lg text-gray-700"></div>
+      </section>
+
+      <!-- Kalkulator Kesehatan -->
+      <section id="health-calculator" class="bg-white p-8 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold mb-6 text-red-500">
+          Kalkulator Kesehatan
+        </h2>
+        <form class="space-y-4">
+          <div>
+            <label for="age" class="block text-sm font-medium text-gray-700"
+              >Umur:</label
+            >
+            <input
+              type="number"
+              id="age"
+              class="mt-1 block w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+              required
+            />
+          </div>
+          <div>
+            <label for="gender" class="block text-sm font-medium text-gray-700"
+              >Jenis Kelamin:</label
+            >
+            <select
+              id="gender"
+              class="mt-1 block w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+              required
+            >
+              <option value="male">Laki-laki</option>
+              <option value="female">Perempuan</option>
+            </select>
+          </div>
+          <div>
+            <label
+              for="medical-history"
+              class="block text-sm font-medium text-gray-700"
+              >Riwayat Penyakit:</label
+            >
+            <textarea
+              id="medical-history"
+              class="mt-1 block w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="btn-animation bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
+          >
+            Hitung Kesehatan
+          </button>
+        </form>
+        <div id="health-result" class="mt-4 text-lg text-gray-700"></div>
+      </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-4">
+      <div class="container mx-auto text-center">
+        <p>Dibuat oleh Azra Hudaya</p>
+      </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>
