@@ -8,11 +8,11 @@
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="bg-gray-100 text-gray-900 font-sans">
     <header class="bg-indigo-600 text-white py-4">
@@ -22,18 +22,18 @@
     </header>
 
     <main class="container mx-auto py-8">
-      <!-- Kalkulator Kehamilan -->
+      <!-- Kalkulator Prediksi Kehamilan -->
       <section
         id="pregnancy-calculator"
         class="bg-white p-8 rounded-lg shadow-md mb-8"
       >
         <h2 class="text-2xl font-bold mb-6 text-blue-500">
-          Kalkulator Kehamilan
+          Kalkulator Prediksi Kehamilan
         </h2>
-        <form class="space-y-4">
+        <form class="space-y-4" id="pregnancy-form">
           <div>
             <label for="lmp" class="block text-sm font-medium text-gray-700"
-              >Tanggal Terakhir Menstruasi:</label
+              >Tanggal HPHT:</label
             >
             <input
               type="date"
@@ -46,7 +46,7 @@
             type="submit"
             class="btn-animation bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
           >
-            Hitung Usia Kehamilan
+            Hitung Prediksi Kehamilan
           </button>
         </form>
         <div id="pregnancy-result" class="mt-4 text-lg text-gray-700"></div>
@@ -60,7 +60,42 @@
         <h2 class="text-2xl font-bold mb-6 text-green-500">
           Kalkulator Indeks Massa Tubuh (IMT)
         </h2>
-        <form class="space-y-4">
+        <p class="text-gray-700 text-lg mb-4">
+          <strong>Indeks Massa Tubuh (IMT)</strong> adalah alat sederhana yang
+          digunakan untuk mengukur status gizi berdasarkan berat dan tinggi
+          badan seseorang. IMT dapat membantu Anda mengetahui apakah berat badan
+          Anda termasuk dalam kategori kurus, normal, gemuk, atau obesitas. 😊
+        </p>
+
+        <!-- Option to choose input method -->
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700"
+            >Bagaimana Anda ingin menghitung IMT?</label
+          >
+          <select
+            id="input-method"
+            class="mt-1 block w-full border border-gray-300 rounded-lg p-2"
+          >
+            <option value="trimester">Saya tahu trimester saya</option>
+            <option value="lmp">Saya tahu tanggal HPHT saya</option>
+          </select>
+        </div>
+
+        <!-- Trimester input -->
+        <form class="space-y-4" id="trimester-form">
+          <div>
+            <label
+              for="preweight"
+              class="block text-sm font-medium text-gray-700"
+              >Berat Badan Sebelum Kehamilan (kg):</label
+            >
+            <input
+              type="number"
+              id="preweight"
+              class="mt-1 block w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              required
+            />
+          </div>
           <div>
             <label for="height" class="block text-sm font-medium text-gray-700"
               >Tinggi Badan (cm):</label
@@ -72,15 +107,31 @@
               required
             />
           </div>
-          <div>
-            <label for="weight" class="block text-sm font-medium text-gray-700"
-              >Berat Badan (kg):</label
+          <!-- Trimester dropdown, only visible if manual trimester is selected -->
+          <div id="trimester-input">
+            <label
+              for="trimester"
+              class="block text-sm font-medium text-gray-700"
+              >Trimester Kehamilan:</label
+            >
+            <select
+              id="trimester"
+              class="mt-1 block w-full border border-gray-300 rounded-lg p-2"
+            >
+              <option value="1">Pertama (0-13 Minggu)</option>
+              <option value="2">Kedua (14-27 Minggu)</option>
+              <option value="3">Ketiga (28-40 Minggu)</option>
+            </select>
+          </div>
+          <!-- HPHT input, hidden initially -->
+          <div id="lmp-input" class="hidden">
+            <label for="lmp-bmi" class="block text-sm font-medium text-gray-700"
+              >Tanggal HPHT:</label
             >
             <input
-              type="number"
-              id="weight"
-              class="mt-1 block w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-              required
+              type="date"
+              id="lmp-bmi"
+              class="mt-1 block w-full border border-gray-300 rounded-lg p-2"
             />
           </div>
           <button
@@ -91,57 +142,6 @@
           </button>
         </form>
         <div id="bmi-result" class="mt-4 text-lg text-gray-700"></div>
-      </section>
-
-      <!-- Kalkulator Kesehatan -->
-      <section id="health-calculator" class="bg-white p-8 rounded-lg shadow-md">
-        <h2 class="text-2xl font-bold mb-6 text-red-500">
-          Kalkulator Kesehatan
-        </h2>
-        <form class="space-y-4">
-          <div>
-            <label for="age" class="block text-sm font-medium text-gray-700"
-              >Umur:</label
-            >
-            <input
-              type="number"
-              id="age"
-              class="mt-1 block w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-              required
-            />
-          </div>
-          <div>
-            <label for="gender" class="block text-sm font-medium text-gray-700"
-              >Jenis Kelamin:</label
-            >
-            <select
-              id="gender"
-              class="mt-1 block w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-              required
-            >
-              <option value="male">Laki-laki</option>
-              <option value="female">Perempuan</option>
-            </select>
-          </div>
-          <div>
-            <label
-              for="medical-history"
-              class="block text-sm font-medium text-gray-700"
-              >Riwayat Penyakit:</label
-            >
-            <textarea
-              id="medical-history"
-              class="mt-1 block w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-            ></textarea>
-          </div>
-          <button
-            type="submit"
-            class="btn-animation bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
-          >
-            Hitung Kesehatan
-          </button>
-        </form>
-        <div id="health-result" class="mt-4 text-lg text-gray-700"></div>
       </section>
     </main>
 
